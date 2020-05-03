@@ -41,8 +41,8 @@ void process_image_callback(const sensor_msgs::Image img)
 
 	// Looping through the full image
 	for (int i = 0; i < img.height * img.step; i++) {
-		// If white pixel is present in the image
-		if (img.data[i] == white_pixel) {
+		// If white pixel is present in the image for every channel (RGB
+		if (img.data[i] == white_pixel && img.data[i + 1] == white_pixel && img.data[i+2] == white_pixel) {
 			isBall = true;
 			// Cheking where the white pixel is located: left, center or right
 			// If the white pixel is present in the left side of the image
